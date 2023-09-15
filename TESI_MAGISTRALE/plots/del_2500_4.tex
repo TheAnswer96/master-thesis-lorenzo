@@ -1,0 +1,99 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{pgfplots, pgfplotstable}
+\usetikzlibrary{positioning}
+\pgfplotsset{compat=1.5}
+
+\begin{filecontents}{del-2500-4.csv}
+destination,gray,osp_c,osp_f,osp_d,osp_s,dsp_f,dsp_d,dsp_s,gsp_f,gsp_d,gsp_s
+Sol,45.5,76.67,0,1.33,22,4,66.67,29.33,40.67,58.67,0.67
+Ali,100,55.15,0,0.3,44.55,5.15,50,44.85,56.06,42.73,1.21
+Cor,90.9,34.67,0,0.33,65,4.33,30.67,65,60.33,39.67,0
+Cala,90.9,32.67,0,0.67,66.67,2.33,31,66.67,60,39,1
+Calv,90.9,54.33,0,0.33,45.33,6.67,48,45.33,59,36.67,4.33
+Ile,90.9,28.33,0,1,70.67,1.33,27.67,71,60.33,34.33,5.33
+Pie,90.9,30,0,0,70,0,30,70,76.67,5.67,17.67
+Bas,90.9,33.33,0,0.33,66.33,1.67,32,66.33,68.33,19.67,12
+San,72.7,19.58,0,1.25,79.17,0,20.83,79.17,76.67,17.92,5.42
+Ole,72.7,16.67,0,0.42,82.92,0,17.08,82.92,82.92,5.83,11.25
+Cag,90.9,50,0,0.67,49.33,4.33,46.33,49.33,72.33,18.33,9.33
+Cap,90.9,71.33,0,1,27.67,13.33,58.67,28,58.67,32.33,9
+\end{filecontents}
+
+\pgfplotstableread[col sep=comma,]{del-2500-4.csv}\datatable
+
+\colorlet{col_osp_C}{blue!90!white}
+
+\colorlet{col_osp_F}{red!90!white}
+\colorlet{col_dsp_F}{orange!60!white}
+\colorlet{col_gsp_F}{yellow!30!white}
+
+\colorlet{col_osp_D}{yellow!90!white}
+\colorlet{col_dsp_D}{blue!60!white}
+\colorlet{col_gsp_D}{red!30!white}
+
+\colorlet{col_osp_S}{purple!90!white}
+\colorlet{col_dsp_S}{cyan!60!white}
+\colorlet{col_gsp_S}{magenta!30!white}
+
+\begin{document}
+	\begin{tikzpicture}
+		\pgfplotsset{ybar stacked, ymin=0, ymax=100, xmin=0.5, xmax=11.4, xtick=data}
+		\begin{axis}[
+				bar shift=-8pt,
+				width=11cm,
+				bar width=5pt,
+				xlabel={destination},
+				ylabel={\%},
+				xticklabels from table={\datatable}{destination},
+				ymajorgrids,
+				legend pos = outer north east, legend style = {name = OSP}]
+			]
+			
+			\addplot[fill = col_osp_C] table [x expr=\coordindex, y=osp_c]{\datatable};
+			\addplot[fill = col_osp_F] table [x expr=\coordindex, y=osp_f]{\datatable};
+			\addplot[fill = col_osp_D] table [x expr=\coordindex, y=osp_d]{\datatable};
+			\addplot[fill = col_osp_S] table [x expr=\coordindex, y=osp_s]{\datatable};
+			
+			\legend{canceled (OSP), fail (OSP), delivered (OSP), success (OSP)}
+		\end{axis}
+
+	
+		\begin{axis}[
+			bar shift=-2pt,
+			width=11cm,
+			bar width=5pt,
+			xtick=data,
+			xticklabels from table={\datatable}{destination},
+%			ymajorgrids,
+			legend style = {at = {([yshift = -2mm, xshift = 4mm]OSP.south west)},
+				anchor = north west, name = DSP}]
+			]
+			
+			\addplot[fill = col_dsp_F] table [x expr=\coordindex, y=dsp_f]{\datatable};
+			\addplot[fill = col_dsp_D] table [x expr=\coordindex, y=dsp_d]{\datatable};
+			\addplot[fill = col_dsp_S] table [x expr=\coordindex, y=dsp_s]{\datatable};
+			
+			\legend{fail (DSP), delivered (DSP), success (DSP)}
+		\end{axis}
+	
+		\begin{axis}[
+			bar shift=4pt,
+			width=11cm,
+			bar width=5pt,
+			xtick=data,
+			xticklabels from table={\datatable}{destination},
+%			ymajorgrids,
+			legend style = {at = {([yshift = -2mm, xshift = 4mm]DSP.south west)},
+				anchor = north west}]
+			]
+			
+			\addplot[fill = col_gsp_F] table [x expr=\coordindex, y=gsp_f]{\datatable};
+			\addplot[fill = col_gsp_D] table [x expr=\coordindex, y=gsp_d]{\datatable};
+			\addplot[fill = col_gsp_S] table [x expr=\coordindex, y=gsp_s]{\datatable};
+			
+			\legend{fail (GSP), delivered (GSP), success (GSP)}
+		\end{axis}
+	
+%		\node[below=1mm]{A\,B\,C};
+	\end{tikzpicture}
+\end{document}

@@ -1,0 +1,64 @@
+Energy consumption projection: 2061.727260901243node->node_s
+0->15->1->1->15->0
+(CONSUMPTION,DISTANCE,TIME)->(2061.73,106.62,17.76)
+
+ WIND CHANGES:4.0
+
+Energy consumption projection: 1755.9285832923695node->node_s
+0->15->2->2->15->0
+(CONSUMPTION,DISTANCE,TIME)->(1755.93,110.02,18.34)
+
+ WIND CHANGES:4.0
+
+Energy consumption projection: 2425.70165560029node->node_s
+0->15->2->39->3->3->39->2->15->0
+(CONSUMPTION,DISTANCE,TIME)->(2939.3,133.44,22.26)
+
+ WIND CHANGES:5.0
+
+Energy consumption projection: 4198.480062547445node->node_s
+0->15->2->39->3->34->4->4->34->3->39->2->15->0
+(CONSUMPTION,DISTANCE,TIME)->(4198.48,200.04,33.34)
+
+ WIND CHANGES:8.0
+
+Energy consumption projection: 3520.0684217877388node->node_s
+0->15->17->21->6->38->5->5->38->6->21->17->15->0
+(CONSUMPTION,DISTANCE,TIME)->(3456.67,210.03,35.0)
+
+ WIND CHANGES:8.0
+
+Energy consumption projection: 2623.6223383385873node->node_s
+0->15->17->21->6->6->21->17->15->0
+(CONSUMPTION,DISTANCE,TIME)->(2834.38,164.39,27.4)
+
+ WIND CHANGES:6.0
+
+Energy consumption projection: 2905.5885745792393node->node_s
+0->15->17->7->7->17->15->0
+(CONSUMPTION,DISTANCE,TIME)->(3516.97,161.32,26.9)
+
+ WIND CHANGES:6.0
+
+Energy consumption projection: 3016.584646605204node->node_s
+0->15->17->21->29->28->8->8->28->29->21->17->15->0
+(CONSUMPTION,DISTANCE,TIME)->(3195.55,185.63,30.94)
+
+ WIND CHANGES:7.0
+
+Energy consumption projection: 2888.5454941105972node->node_s
+0->15->17->21->29->9->9->29->21->17->15->0
+(CONSUMPTION,DISTANCE,TIME)->(2841.51,175.04,29.16)
+
+ WIND CHANGES:7.0
+
+Energy consumption projection: 5153.147673841044node->node_s
+0
+CANCELED
+ WIND CHANGES:0
+
+Energy consumption projection: 5668.338734133829node->node_s
+0
+CANCELED
+ WIND CHANGES:0
+
